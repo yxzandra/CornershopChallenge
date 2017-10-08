@@ -42,7 +42,7 @@ public class CountersAdapter extends RecyclerView.Adapter<CountersAdapter.Counte
 
     @Override
     public void onBindViewHolder(CountersHolder holder, final int position) {
-        holder.tvTitleCounter.setText(mLista.get(position).getId());
+        holder.tvTitleCounter.setText(mLista.get(position).getTitle());
         holder.tvCounter.setText(String.valueOf(mLista.get(position).getCount()));
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +54,14 @@ public class CountersAdapter extends RecyclerView.Adapter<CountersAdapter.Counte
         holder.ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_ADD,mLista.get(position).getId()});
+                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_INCREMENT,mLista.get(position).getId()});
             }
         });
 
-        holder.ivAdd.setOnClickListener(new View.OnClickListener() {
+        holder.ivMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_MINUS,mLista.get(position).getId()});
+                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_DECREMENT,mLista.get(position).getId()});
             }
         });
     }

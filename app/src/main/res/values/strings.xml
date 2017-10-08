@@ -25,4 +25,8 @@
     <string name="accept">Accept</string>
     <string name="title_menu_add">Add</string>
     <string name="dialog_title_add_counter">Add Title to Counter</string>
+    <string name="update_counter">Updating Counter</string>
+    <string name="remove_counter">Remove Counter</string>
+    <string name="adding_counter">Adding Counter</string>
+    <string name="loading_counter">Loading Counters</string>
 </resources>

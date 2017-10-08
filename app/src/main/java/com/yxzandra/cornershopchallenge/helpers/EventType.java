@@ -6,8 +6,8 @@ package com.yxzandra.cornershopchallenge.helpers;
 
 public class EventType {
     public static final int ONCLICK_COUNTER_DELETE = 1000;
-    public static final int ONCLICK_COUNTER_ADD = 1001;
-    public static final int ONCLICK_COUNTER_MINUS = 1002;
+    public static final int ONCLICK_COUNTER_INCREMENT = 1001;
+    public static final int ONCLICK_COUNTER_DECREMENT = 1002;
 
     public static final int ADD_COUNTER = 2000;
 }

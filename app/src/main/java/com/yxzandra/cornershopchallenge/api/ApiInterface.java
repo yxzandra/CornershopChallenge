@@ -5,10 +5,10 @@ import com.yxzandra.cornershopchallenge.schemas.Counter;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 
 /**
@@ -31,7 +31,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<List<Counter>> decrementCounter(@Field("id") String id);
 
-    @DELETE("/api/v1/counter")
+    @HTTP(method = "DELETE", path = "/api/v1/counter", hasBody = true)
     @FormUrlEncoded
     Call<List<Counter>> deleteCounter(@Field("id") String id);
 }

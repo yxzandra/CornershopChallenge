@@ -1,6 +1,5 @@
 package com.yxzandra.cornershopchallenge.mvp.views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +10,7 @@ import android.view.MenuItem;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.yxzandra.cornershopchallenge.R;
+import com.yxzandra.cornershopchallenge.api.WebService;
 import com.yxzandra.cornershopchallenge.helpers.CustomMessage;
 import com.yxzandra.cornershopchallenge.helpers.EventType;
 import com.yxzandra.cornershopchallenge.mvp.presenters.CounterListPresenter;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
         setSupportActionBar(toolbar);
         EventBus.getDefault().register(this);
 
-        mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, "Loading Counters").build();
+        mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getString(R.string.loading_counter)).build();
         rvCounter.setHasFixedSize(true);
         rvCounter.setLayoutManager(new LinearLayoutManager(this));
         mPresenter = new CounterListPresenterImpl().init(this);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
 
     @Override
     public void showHttpError(int code) {
-
+        WebService.handlerRequestError(getApplicationContext(),code);
     }
 
     @Subscribe
@@ -123,19 +123,25 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
 
         int event = (int) args[0];
 
+
         switch (event) {
             case EventType.ONCLICK_COUNTER_DELETE:
+                mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getResources().getString(R.string.remove_counter)).build();
                 onClickDelete(args[1].toString());
                 break;
-            case EventType.ONCLICK_COUNTER_ADD:
+            case EventType.ONCLICK_COUNTER_INCREMENT:
+                mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getResources().getString(R.string.update_counter)).build();
                 onClickIncrement(args[1].toString());
                 break;
-            case EventType.ONCLICK_COUNTER_MINUS:
+            case EventType.ONCLICK_COUNTER_DECREMENT:
+                mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getResources().getString(R.string.update_counter)).build();
                 onClickDecrement(args[1].toString());
                 break;
             case EventType.ADD_COUNTER:
+                mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getResources().getString(R.string.adding_counter)).build();
                 addCounter(args[1].toString());
                 break;
         }
+        showProgress();
     }
 }
