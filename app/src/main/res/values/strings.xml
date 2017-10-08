@@ -3,26 +3,26 @@
 
     <!-- TITLE DIALOGS -->
     <string name="error">Error</string>
-    <string name="information">Información</string>
-    <string name="warning">Advertencia</string>
-    <string name="problems">Problemas</string>
-    <string name="cancel">Cancelar</string>
-    <string name="please_wait">Por favor espere</string>
-    <string name="unauthorized">No autorizado</string>
-    <string name="success">Exitoso</string>
-    <string name="question">¿Estas seguro?</string>
-    <string name="add_observation">Agregar observacion</string>
+    <string name="information">Information</string>
+    <string name="warning">Warning</string>
+    <string name="problems">Problem</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="unauthorized">Not authorized</string>
+    <string name="success">Successful</string>
+    <string name="question">Are You Sure?</string>
+    <string name="add_observation">Add Comment</string>
 
     <!-- MESSAGES ERROR-->
-    <string name="timeout">Hay problemas intentando conectarse a los servidores.\n\nPor favor, verifique que posee conexión a internet.</string>
-    <string name="server_error">Tenemos problemas con los servidores. Inténtelo más tarde y disculpe las molestias ocacionadas</string>
-    <string name="bad_request">El servicio presenta inconvenientes para procesar su solicitud. Inténtelo más tarde y notifíquenos si este error continúa</string>
-    <string name="service_not_found">Servicio no encontrado. Inténtelo más tarde y notifíquenos si este error continúa</string>
-    <string name="unauthorized_user">Lo sentimos, pero no está autorizado para ejecutar esta acción.\n\nIntente iniciar sesión nuevamente</string>
-    <string name="login_error">Usuario o contraseña inválida</string>
-    <string name="msg_error_no_response">Error en el servidor. Comunicación fallida</string>
+    <string name="timeout">There are problems trying to connect to the servers.\n\nPlease verify that you have internet connection.</string>
+    <string name="server_error">We have problems with the servers. Please try again later and apologize for any inconvenience</string>
+    <string name="bad_request">The service has problems to process your request. Please try again later and notify us if this error continues.</string>
+    <string name="service_not_found">Service not found. Please try again later and notify us if this error continues.</string>
+    <string name="unauthorized_user">We are sorry, but you are not authorized to perform this action.\n\nTry to sign in again</string>
+    <string name="msg_error_no_response">Server error. Communication failed</string>
 
     <!-- GENERAL -->
-    <string name="accept">Aceptar</string>
-    <string name="title_menu_add">agregar</string>
+    <string name="accept">Accept</string>
+    <string name="title_menu_add">Add</string>
+    <string name="dialog_title_add_counter">Add Title to Counter</string>
 </resources>

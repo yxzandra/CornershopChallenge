@@ -7,6 +7,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -19,14 +20,18 @@ public interface ApiInterface {
     Call<List<Counter>> getAllCounters();
 
     @POST("/api/v1/counter")
+    @FormUrlEncoded
     Call<List<Counter>> addCounter(@Field("title") String title);
 
     @POST("/api/v1/counter/inc")
+    @FormUrlEncoded
     Call<List<Counter>> incrementCounter(@Field("id") String id);
 
     @POST("/api/v1/counter/dec")
+    @FormUrlEncoded
     Call<List<Counter>> decrementCounter(@Field("id") String id);
 
     @DELETE("/api/v1/counter")
-    Call<List<Counter>> deleteCounter(@Field("id") String title);
+    @FormUrlEncoded
+    Call<List<Counter>> deleteCounter(@Field("id") String id);
 }

@@ -8,12 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yxzandra.cornershopchallenge.R;
+import com.yxzandra.cornershopchallenge.helpers.EventType;
 import com.yxzandra.cornershopchallenge.schemas.Counter;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by yxzan on 07/10/2017.
@@ -22,6 +26,7 @@ import butterknife.ButterKnife;
 public class CountersAdapter extends RecyclerView.Adapter<CountersAdapter.CountersHolder> {
 
     private List<Counter> mLista;
+    private EventBus mBus = EventBus.getDefault();
 
     public CountersAdapter(List<Counter> lista) {
         mLista = lista;
@@ -36,9 +41,29 @@ public class CountersAdapter extends RecyclerView.Adapter<CountersAdapter.Counte
     }
 
     @Override
-    public void onBindViewHolder(CountersHolder holder, int position) {
+    public void onBindViewHolder(CountersHolder holder, final int position) {
         holder.tvTitleCounter.setText(mLista.get(position).getId());
         holder.tvCounter.setText(String.valueOf(mLista.get(position).getCount()));
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_DELETE,mLista.get(position).getId()});
+            }
+        });
+
+        holder.ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_ADD,mLista.get(position).getId()});
+            }
+        });
+
+        holder.ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mBus.post(new Object[] {EventType.ONCLICK_COUNTER_MINUS,mLista.get(position).getId()});
+            }
+        });
     }
 
     @Override

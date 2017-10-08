@@ -41,4 +41,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
 
     compile 'com.afollestad.material-dialogs:core:0.8.6.2'
+
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

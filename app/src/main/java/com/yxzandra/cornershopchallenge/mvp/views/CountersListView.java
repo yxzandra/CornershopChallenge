@@ -7,7 +7,6 @@ package com.yxzandra.cornershopchallenge.mvp.views;
 public interface CountersListView {
     void showProgress();
     void hideProgress();
-    void onClickAddCounter();
     void loadListCounters(CountersAdapter mAdapter);
     void addCounter(String title);
     void onClickDecrement(String id);
