@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.yxzandra.cornershopchallenge.R;
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
     Toolbar toolbar;
     @BindView(R.id.rvCounter)
     RecyclerView rvCounter;
+    @BindView(R.id.tvTotal)
+    TextView tvTotal;
+    @BindView(R.id.lyContainerTotal)
+    LinearLayout lyContainerTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +95,15 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
 
     @Override
     public void loadListCounters(CountersAdapter mAdapter) {
-        rvCounter.setAdapter(mAdapter);
+        if (mAdapter != null) {
+            rvCounter.setVisibility(View.VISIBLE);
+            lyContainerTotal.setVisibility(View.VISIBLE);
+            rvCounter.setAdapter(mAdapter);
+        } else {
+            rvCounter.setVisibility(View.GONE);
+            lyContainerTotal.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -99,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
     @Override
     public void onClickDecrement(String id) {
         mPresenter.decrementCounter(id);
-
     }
 
     @Override
@@ -110,12 +124,16 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
     @Override
     public void onClickDelete(String id) {
         mPresenter.deleteCounter(id);
-
     }
 
     @Override
     public void showHttpError(int code) {
-        WebService.handlerRequestError(getApplicationContext(),code);
+        WebService.handlerRequestError(getApplicationContext(), code);
+    }
+
+    @Override
+    public void totalCounter(int total) {
+        tvTotal.setText(String.valueOf(total));
     }
 
     @Subscribe

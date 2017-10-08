@@ -3,4 +3,5 @@
     <dimen name="padding_card_view">10dp</dimen>
     <dimen name="padding_text_view">5dp</dimen>
     <dimen name="dialog_max_icon_size">35dp</dimen>
+    <dimen name="padding_total">20dp</dimen>
 </resources>

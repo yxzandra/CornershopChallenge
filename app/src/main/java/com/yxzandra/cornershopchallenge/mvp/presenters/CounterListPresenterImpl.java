@@ -59,9 +59,23 @@ public class CounterListPresenterImpl implements CounterListPresenter, ApiListen
     @Override
     public void successApi(List<Counter> result) {
         mView.hideProgress();
-        CountersAdapter mAdapter = new CountersAdapter(result);
-        mView.loadListCounters(mAdapter);
+        if (result.size() != 0) {
+            CountersAdapter mAdapter = new CountersAdapter(result);
+            grandTotal(result);
+            mView.loadListCounters(mAdapter);
+        }else
+            mView.loadListCounters(null);
 
+    }
+
+    private void grandTotal(List<Counter> items){
+
+        int totalCount = 0;
+        for(Counter counter : items) {
+            totalCount += counter.getCount();
+        }
+
+        mView.totalCounter(totalCount);
     }
 
     @Override
