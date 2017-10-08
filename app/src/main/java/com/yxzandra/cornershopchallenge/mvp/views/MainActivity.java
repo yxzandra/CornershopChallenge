@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
 
     @Override
     public void showHttpError(int code) {
-        WebService.handlerRequestError(getApplicationContext(), code);
+        WebService.handlerRequestError(this, code);
     }
 
     @Override

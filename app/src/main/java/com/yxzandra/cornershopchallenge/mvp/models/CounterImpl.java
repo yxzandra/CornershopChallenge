@@ -4,6 +4,7 @@ package com.yxzandra.cornershopchallenge.mvp.models;
 import com.yxzandra.cornershopchallenge.api.WebService;
 import com.yxzandra.cornershopchallenge.schemas.Counter;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,7 +38,7 @@ public class CounterImpl implements CounterInterface {
 
             @Override
             public void onFailure(Call<List<Counter>> call, Throwable t) {
-                mListener.errorApi(0);
+                mListener.errorApi(400);
             }
         });
 
@@ -56,7 +57,7 @@ public class CounterImpl implements CounterInterface {
 
             @Override
             public void onFailure(Call<List<Counter>> call, Throwable t) {
-                mListener.errorApi(0);
+                mListener.errorApi(400);
             }
         });
 
@@ -75,7 +76,7 @@ public class CounterImpl implements CounterInterface {
 
             @Override
             public void onFailure(Call<List<Counter>> call, Throwable t) {
-                mListener.errorApi(0);
+                mListener.errorApi(400);
             }
         });
 
@@ -94,7 +95,7 @@ public class CounterImpl implements CounterInterface {
 
             @Override
             public void onFailure(Call<List<Counter>> call, Throwable t) {
-                mListener.errorApi(0);
+                mListener.errorApi(400);
             }
         });
 
@@ -113,7 +114,7 @@ public class CounterImpl implements CounterInterface {
 
             @Override
             public void onFailure(Call<List<Counter>> call, Throwable t) {
-                mListener.errorApi(0);
+                mListener.errorApi(400);
             }
         });
 
