@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
     private CounterListPresenter mPresenter;
     private MaterialDialog mDialog;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.rvCounter)
     RecyclerView rvCounter;
     @BindView(R.id.tvTotal)
@@ -43,18 +41,13 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        toolbar.setTitle(R.string.app_name);
-        setSupportActionBar(toolbar);
         EventBus.getDefault().register(this);
 
         mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getString(R.string.loading_counter)).build();
         rvCounter.setHasFixedSize(true);
         rvCounter.setLayoutManager(new LinearLayoutManager(this));
         mPresenter = new CounterListPresenterImpl().init(this);
-
         mPresenter.loadCounters();
-
-
     }
 
     @Override
