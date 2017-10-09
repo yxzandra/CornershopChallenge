@@ -39,7 +39,7 @@ public class WebService {
     //http://192.168.3.151:15937
 
     // END-POINTS
-    private static final String URL_BASE = "http://192.168.0.107:3000";
+    private static final String URL_BASE = "http://10.0.0.21:3000/";
 
     /********************************************************************************
      * CONSTRUCTORS                                                                 *
