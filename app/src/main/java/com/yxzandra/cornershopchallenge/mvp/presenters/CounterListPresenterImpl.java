@@ -20,9 +20,10 @@ public class CounterListPresenterImpl implements CounterListPresenter, ApiListen
     private CounterInterface counterInterface;
 
     @Override
-    public CounterListPresenter init(CountersListView view) {
+    public CounterListPresenter init(CountersListView view,String urlBase ) {
         mView = view;
-        counterInterface = new CounterImpl().init(this);
+        counterInterface = new CounterImpl().init(this, urlBase);
+
         return this;
     }
 

@@ -4,7 +4,6 @@ package com.yxzandra.cornershopchallenge.mvp.models;
 import com.yxzandra.cornershopchallenge.api.WebService;
 import com.yxzandra.cornershopchallenge.schemas.Counter;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,8 +19,9 @@ public class CounterImpl implements CounterInterface {
     ApiListener mListener;
 
     @Override
-    public CounterInterface init(ApiListener listener) {
+    public CounterInterface init(ApiListener listener,String urlBase ) {
         mListener = listener;
+        WebService.setUrlBase(urlBase);
         return this;
     }
 

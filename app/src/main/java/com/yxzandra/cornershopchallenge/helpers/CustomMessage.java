@@ -26,6 +26,7 @@ public class CustomMessage {
     public static final int TYPE_SUCCESS = 8;
     public static final int TYPE_QUESTION = 9;
     public static final int TYPE_EDITTEXT = 10;
+    public static final int TYPE_EDITTEXT_IP = 11;
 
 
     public static MaterialDialog.Builder get(Context context, int type, String message) {
@@ -127,6 +128,19 @@ public class CustomMessage {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 mBus.post(new Object[] {EventType.ADD_COUNTER,input.toString()});
+                            }
+                        });
+                break;
+            case TYPE_EDITTEXT_IP:
+                dialog = new MaterialDialog.Builder(context)
+                        .title(message)
+                        .iconRes(R.drawable.ic_information)
+                        .maxIconSizeRes(R.dimen.dialog_max_icon_size)
+                        .cancelable(false)
+                        .input("192.168.3.137:3000", null, new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                mBus.post(new Object[] {EventType.ADD_URL_BASE,input.toString()});
                             }
                         });
                 break;

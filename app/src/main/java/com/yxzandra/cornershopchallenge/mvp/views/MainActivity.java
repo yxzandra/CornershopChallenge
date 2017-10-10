@@ -42,11 +42,15 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
+        mDialog = CustomMessage.get(this, CustomMessage.TYPE_EDITTEXT_IP, getString(R.string.dialog_title_add_ip)).build();
+        mDialog.show();
 
+    }
+    public void loadCounters(String urlBase){
         mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getString(R.string.loading_counter)).build();
         rvCounter.setHasFixedSize(true);
         rvCounter.setLayoutManager(new LinearLayoutManager(this));
-        mPresenter = new CounterListPresenterImpl().init(this);
+        mPresenter = new CounterListPresenterImpl().init(this, urlBase);
         mPresenter.loadCounters();
     }
 
@@ -151,6 +155,10 @@ public class MainActivity extends AppCompatActivity implements CountersListView 
             case EventType.ADD_COUNTER:
                 mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getResources().getString(R.string.adding_counter)).build();
                 addCounter(args[1].toString());
+                break;
+            case EventType.ADD_URL_BASE:
+                mDialog = CustomMessage.get(this, CustomMessage.TYPE_PROGRESSBAR, getString(R.string.loading_counter)).build();
+                loadCounters(args[1].toString());
                 break;
         }
         showProgress();

@@ -1,6 +1,7 @@
 package com.yxzandra.cornershopchallenge.api;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.yxzandra.cornershopchallenge.R;
@@ -36,10 +37,7 @@ public class WebService {
     /********************************************************************************
      * URLs                                                                         *
      ********************************************************************************/
-    //http://192.168.3.151:15937
-
-    // END-POINTS
-    private static final String URL_BASE = "http://10.0.0.21:3000/";
+    public static String URL_BASE = "http://";
 
     /********************************************************************************
      * CONSTRUCTORS                                                                 *
@@ -162,6 +160,7 @@ public class WebService {
                     .readTimeout(timeout, TimeUnit.SECONDS)
                     .connectTimeout(timeout, TimeUnit.SECONDS)
                     .build();
+            Log.e(TAG,getUrlBase());
 
             Retrofit mRetrofitCustomTimeout = new Retrofit.Builder()
                     .baseUrl(URL_BASE)
@@ -206,6 +205,15 @@ public class WebService {
         return api.deleteCounter(id);
     }
 
+    /********************************************************************************
+     * METHOD                                                                   *
+     ********************************************************************************/
 
+    public static void setUrlBase(String urlBase) {
+        URL_BASE = URL_BASE+urlBase;
+    }
 
+    public static String getUrlBase() {
+        return URL_BASE;
+    }
 }
