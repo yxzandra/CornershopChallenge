@@ -12,6 +12,6 @@ public interface CountersListView {
     void onClickDecrement(String id);
     void onClickIncrement(String id);
     void onClickDelete(String id);
-    void showHttpError(int code);;
+    void showHttpError(int code);
     void totalCounter(int total);
 }
