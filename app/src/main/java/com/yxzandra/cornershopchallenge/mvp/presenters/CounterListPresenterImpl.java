@@ -1,6 +1,8 @@
 package com.yxzandra.cornershopchallenge.mvp.presenters;
 
 
+import android.content.Context;
+
 import com.yxzandra.cornershopchallenge.mvp.models.ApiListener;
 import com.yxzandra.cornershopchallenge.mvp.models.CounterImpl;
 import com.yxzandra.cornershopchallenge.mvp.models.CounterInterface;
@@ -20,10 +22,9 @@ public class CounterListPresenterImpl implements CounterListPresenter, ApiListen
     private CounterInterface counterInterface;
 
     @Override
-    public CounterListPresenter init(CountersListView view,String urlBase ) {
+    public CounterListPresenter init(CountersListView view) {
         mView = view;
-        counterInterface = new CounterImpl().init(this, urlBase);
-
+        counterInterface = new CounterImpl().init(this);
         return this;
     }
 

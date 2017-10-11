@@ -1,6 +1,7 @@
 package com.yxzandra.cornershopchallenge.helpers;
 
 import android.content.Context;
+import android.preference.*;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.yxzandra.cornershopchallenge.R;
@@ -29,7 +30,7 @@ public class CustomMessage {
     public static final int TYPE_EDITTEXT_IP = 11;
 
 
-    public static MaterialDialog.Builder get(Context context, int type, String message) {
+    public static MaterialDialog.Builder get(final Context context, int type, String message) {
         MaterialDialog.Builder dialog = null;
 
         if (context == null) {
@@ -128,19 +129,6 @@ public class CustomMessage {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 mBus.post(new Object[] {EventType.ADD_COUNTER,input.toString()});
-                            }
-                        });
-                break;
-            case TYPE_EDITTEXT_IP:
-                dialog = new MaterialDialog.Builder(context)
-                        .title(message)
-                        .iconRes(R.drawable.ic_information)
-                        .maxIconSizeRes(R.dimen.dialog_max_icon_size)
-                        .cancelable(false)
-                        .input("192.168.3.137:3000", null, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
-                                mBus.post(new Object[] {EventType.ADD_URL_BASE,input.toString()});
                             }
                         });
                 break;

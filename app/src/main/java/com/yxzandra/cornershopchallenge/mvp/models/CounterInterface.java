@@ -5,7 +5,7 @@ package com.yxzandra.cornershopchallenge.mvp.models;
  */
 
 public interface CounterInterface {
-    CounterInterface init(ApiListener listener, String urlBase);
+    CounterInterface init(ApiListener listener);
     void getAllCounters();
     void addCounter(String title);
     void incrementCounter(String id);

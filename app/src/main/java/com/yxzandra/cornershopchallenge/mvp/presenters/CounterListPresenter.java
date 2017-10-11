@@ -7,7 +7,7 @@ import com.yxzandra.cornershopchallenge.mvp.views.CountersListView;
  */
 
 public interface CounterListPresenter {
-    CounterListPresenter init(CountersListView view, String urlBase);
+    CounterListPresenter init(CountersListView view);
     void loadCounters();
     void addCounter(String title);
     void deleteCounter(String id);

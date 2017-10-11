@@ -19,9 +19,8 @@ public class CounterImpl implements CounterInterface {
     ApiListener mListener;
 
     @Override
-    public CounterInterface init(ApiListener listener,String urlBase ) {
+    public CounterInterface init(ApiListener listener) {
         mListener = listener;
-        WebService.setUrlBase(urlBase);
         return this;
     }
 
