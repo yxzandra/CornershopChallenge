@@ -125,6 +125,7 @@ public class CustomMessage {
                         .title(message)
                         .iconRes(R.drawable.ic_information)
                         .maxIconSizeRes(R.dimen.dialog_max_icon_size)
+                        .positiveText(R.string.accept)
                         .input(null, null, new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
